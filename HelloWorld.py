@@ -8,53 +8,20 @@ Reference: (1) https://www.youtube.com/watch?v=wqRlKVRUV_k&list=PL-g0fdC5RMboYEy
 """
 OS_WIN = "nt"
 OS_UNIX = "posix"
+CMD_CLEAN_WIN = "cls"
+CMD_CLEAN_UNIX = "clear"
+
 
 def dataManipulation():
-    print (f"\tData Manipulation Start...") #\t will leave 8 spaces
-    print (f"\tLab 1: put the value in your code directly...")
-    123
-    123.45
-    "this is test"
-    (1, 2, 3)
-    [4, 5, 6]
-    {7, 8, 9} 
-    {"a": "apple", "b": "banana", "c": "car"}
-    print(f"\t in this function, we give the value but didn't assign it to corresponding variable, the program can be ran without errors.")
-    print(f"\t when program runs, you won't see anything from standard output since we didn't print it.")
-    print (f"\tLab 1: put the value in your code directly...DONE!\n")
-    
-    print (f"\tLab 2: numeric manipulation...")
-    # the name of variable must start with letter, but you don't need to declare the type of variable.
-    var_x = 3
-    # the value can be updated by different type
-    var_x = True
-    var_x = "Hello"
-    
-    print(f"\t arithmetic of power can be represent two asterisk '**', e.g., 3**3={3**3}");
-    print(f"\t use // to get quotient. e.g., 9//2={9//2}");
-    print(f"\t use % to get quotient. e.g., 9%2={9%2}");
-    print (f"\tLab 2: numeric manipulation...DONE!\n")
-    print (f"\tLab 3: string manipulation...")
-    
-    # x=x+1 equal with x+=1
-    # in Python, the value of string can use single quote or double quote. e.g., "test" or 'test'
-    # if you want to put a value of string into variable and it over a line, you can use three of single quote or double quote to block it.
-    var_y = ''' this is a test
-    for putting the value of string into different lines in the code.
-    '''
-    var_y = "Hello"+"World"
-    print(f"\t use symbol:+ to concatenate strings. e.g., Hello+World={var_y}");
-    var_y=var_y*3
-    print(f"\t you also can use symbol:* to repeat the string. e.g., Hello*={var_y}");
-    
-    var_y = "HANDLE-CHARACTER"
-    print (f"\t remember, the index of string in Python starts from 0.")
-    print (f"\t let's use a string and handle it by using array. Given the value of str1={var_y}");
-    print (f"\t print(str1[1:4])={var_y[1:4]}"); # slice case
-    print (f"\t print(str1[1:])={var_y[1:]}"); # slice case
-    print (f"\t print(str1[:4])={var_y[:4]}"); # slice case
-    print (f"\tLab 3: string manipulation...DONE!\n")
-   
+    print(f"\tData Manipulation Start...")  # \t will leave 8 spaces
+    exec_lab1()
+    exec_lab2()
+    exec_lab3()
+    exec_lab4()
+    print(f"\tData Manipulation Start...End!")
+
+
+def exec_lab4():
     '''
     Here is the note I copied from ChatGPT, the difference between List & Tuple and the considerations. 
     In Python, both lists and tuples are used to store a collection of items. However, there are some key differences between the two:
@@ -67,43 +34,162 @@ def dataManipulation():
       3. When you want to return multiple values from a function in a way that can't be easily modified outside of the function.
       4. When you want to optimize memory usage and performance, since tuples are smaller and faster than lists.
     Overall, the choice between using a list or a tuple will depend on your specific use case and the requirements of your program.    
-    '''    
-    print (f"\tLab 4: data structure manipulation...")
-    print (f"\t in this demo, the program will illustrate how to use List & Tuple.");
-    var_list = [12, 60, 15, 70, 90];
-    var_tuple = (12, 60, 15, 70, 90);
+    '''
+    print(f"\tLab 4: data structure manipulation...")
+    print(f"\t in this demo, the program will illustrate how to use List & Tuple.")
+    var_list = [12, 60, 15, 70, 90]
+    var_tuple = (12, 60, 15, 70, 90)
     var_len_z = len(var_list)
-    print (f"\t here we have a list:{*var_list,}, length={var_len_z}") # remember you need put asterisk in front of variable, then add a comma after list variable to remove braces.
-    var_list[2]=99
-    print (f"\t you can update any one of them by index from 0. e.g., var_z[2]=99, the result will be:{*var_list,}")
-    print (f"\t you also can use slice way to get a sub list by specified range, e.g., var_z[2:4]={*var_list[2:4],}")
-    var_list[1:3]=[88,77]
-    print (f"\t you also can update a part of list by using silce way. For example, we can set var_z[1:3]=[88,77], then we will get a new list like:{*var_list,} ")
-    var_list = var_list + [100,17]
-    print (f"\t if you want to add more elements at the tail of array, look this example => var_z=var_z+[100,120]. The reulst will be:{*var_list,}")
+    # remember you need put asterisk in front of variable, then add a comma after list variable to remove braces.
+    print(f"\t here we have a list:{*var_list,}, length={var_len_z}")
+    var_list[2] = 99
+    print(
+        f"\t you can update any one of them by index from 0. e.g., var_z[2]=99, the result will be:{*var_list,}")
+    print(
+        f"\t you also can use slice way to get a sub list by specified range, e.g., var_z[2:4]={*var_list[2:4],}")
+    var_list[1:3] = [88, 77]
+    print(
+        f"\t you also can update a part of list by using silce way. For example, we can set var_z[1:3]=[88,77], then we will get a new list like:{*var_list,} ")
+    var_list = var_list + [100, 17]
+    print(
+        f"\t if you want to add more elements at the tail of array, look this example => var_z=var_z+[100,120]. The reulst will be:{*var_list,}")
     var_list.sort()
-    print (f"\t last, you can use .sort() to sort your list. The result will be:{*var_list,}")    
-    print (f"\t at begining, we initiated a Tuple which value is the same with list:{*var_tuple,}")
-    print (f"\t you can sort Tuple by sorted(), here is an example: {*sorted(var_tuple),}")
-    
+    print(
+        f"\t last, you can use .sort() to sort your list. The result will be:{*var_list,}")
+    print(
+        f"\t at begining, we initiated a Tuple which value is the same with list:{*var_tuple,}")
+    print(
+        f"\t you can sort Tuple by sorted(), here is an example: {*sorted(var_tuple),}")
+
     try:
-        print (f"\t if you try to update the Tuple like this: var_tuple[0] = 99, you will...")
+        print(
+            f"\t if you try to update the Tuple like this: var_tuple[0] = 99, you will...")
         var_tuple[0] = 99
     except TypeError as e:
-        print (f"\t oops! you got an error:{e}")
-    print (f"\tLab 4: data structure manipulation...DONE!")
-    print (f"\tData Manipulation Start...End!")
+        print(f"\t oops! you got an error:{e}")
+
+    '''
+    # Set, Dictionary
+    # The dictionary in Python is similar with the properties in Java. However, there are some differences between them:
+        (1) Data types: In Java, Properties can only store String key-value pairs, whereas in Python, dictionaries can store key-value pairs of any data type.
+        (2) Serialization: Properties in Java can be easily serialized to a file or stream, whereas Python dictionaries do not have built-in serialization capabilities. However, Python provides a module called pickle that can be used to serialize Python objects including dictionaries.
+        (3) Syntax: The syntax for accessing elements in a dictionary in Python is simpler and more concise than accessing properties in Java. In Python, you can access a value from a dictionary by using the key in square brackets: my_dict['key']. In Java, you need to use the getProperty() method to access a value from a Properties object: myProperties.getProperty("key").
+        (4) Ordering: Properties in Java are ordered, whereas dictionaries in Python are unordered. However, starting from Python 3.7, dictionaries are guaranteed to maintain insertion order.
+        (5) Default values: In Java, Properties provide a way to specify default values for missing keys by setting the default property. In Python, you can use the get() method to specify a default value for missing keys.    
+    '''
+
+    var_set1 = {1, 2, 3, 4}
+    var_set2 = {3, 4, 5, 6}
+    print(f"\t assume we have two sets: {var_set1}, {var_set2}")
+    print(f"\t the result of intersection is: {var_set1 & var_set2}")
+    print(f"\t the result of union is: {var_set1 | var_set2}")
+    print(f"\t the result of difference is: {var_set1 - var_set2}")
+    print(f"\t the result of symmetric difference is: {var_set1 ^ var_set2}")
+
+    # Use set function to split a string into a set. Be aware this function is case sensitive.
+    var_str = "An apple"
+    var_set3 = set(var_str)
+    print(
+        f"\t given a string and set the value is: {var_str}, the result of using set function is: {var_set3}")
+    # you also can use key word: 'in' to determine the given value exist in the set or not.
+    print(f"\t does x in the set:{var_set3} ? {'x' in var_set3}")
+
+    var_dic = {"name": "John", "age": 30, "city": "New York"}
+    print(f"\t given a dictionary and print the value is: {var_dic}")
+    print(f"\t print the value of key:name is: {var_dic['name']}")
+    print(f"\t print the value of key:age is: {var_dic['age']}")
+    # add new key:sex into dictionary:var_dic
+    var_dic["sex"] = "Male"
+    print(f"\t add a new key:sex and give the value is 'Male' {var_dic}")
+    # update key:age to age_x
+    var_dic['first_name'] = var_dic.pop('name')
+    print(
+        f"\t rename the key:name as first_name and show the result is: {var_dic}")
+    # delete key:citys
+    del var_dic['city']
+    print(f"\t delete the key:city and show the result is: {var_dic}")
+
+    print(f"\tLab 4: data structure manipulation...DONE!")
+
+
+def exec_lab3():
+    print(f"\tLab 3: string manipulation...")
+
+    # x=x+1 equal with x+=1
+    # in Python, the value of string can use single quote or double quote. e.g., "test" or 'test'
+    # if you want to put a value of string into variable and it over a line, you can use three of single quote or double quote to block it.
+    var_y = ''' this is a test
+    for putting the value of string into different lines in the code.
+    '''
+    var_y = "Hello"+"World"
+    print(f"\t use symbol:+ to concatenate strings. e.g., Hello+World={var_y}")
+    var_y = var_y*3
+    print(
+        f"\t you also can use symbol:* to repeat the string. e.g., Hello*={var_y}")
+
+    var_y = "HANDLE-CHARACTER"
+    print(f"\t remember, the index of string in Python starts from 0.")
+    print(
+        f"\t let's use a string and handle it by using array. Given the value of str1={var_y}")
+    print(f"\t print(str1[1:4])={var_y[1:4]}")  # slice case
+    print(f"\t print(str1[1:])={var_y[1:]}")  # slice case
+    print(f"\t print(str1[:4])={var_y[:4]}")  # slice case
+    print(f"\tLab 3: string manipulation...DONE!\n")
+
+
+def exec_lab2():
+    print(f"\tLab 2: numeric manipulation...")
+    # the name of variable must start with letter, but you don't need to declare the type of variable.
+    var_x = 3
+    # the value can be updated by different type
+    var_x = True
+    var_x = "Hello"
+
+    print(
+        f"\t arithmetic of power can be represent two asterisk '**', e.g., 3**3={3**3}")
+    print(f"\t use // to get quotient. e.g., 9//2={9//2}")
+    print(f"\t use % to get quotient. e.g., 9%2={9%2}")
+    print(f"\tLab 2: numeric manipulation...DONE!\n")
+
+
+def exec_lab1():
+    print(f"\tLab 1: put the value in your code directly...")
+    123
+    123.45
+    "this is test"
+    (1, 2, 3)  # Tuple
+    [4, 5, 6]  # List
+    {7, 8, 9}  # Set
+    {"a": "apple", "b": "banana", "c": "car"}  # Dictionary
+    print(f"\t in this function, we give the value but didn't assign it to corresponding variable, the program can be ran without errors.")
+    print(f"\t when program runs, you won't see anything from standard output since we didn't print it.")
+    print(f"\tLab 1: put the value in your code directly...DONE!\n")
 
 
 # determine and execute from main function
 # be aware the function must to be declare before using
-if __name__ == "__main__":    
-    if os.name == OS_WIN:
-        os.system('cls')
-    elif os.name == OS_UNIX:
-        os.system('clear')    
-    
-    print ("==MAIN FUNCTION==")
-    dataManipulation()
-    print ("==PROGRAM END==\n\n")
+def clean_screen(os_name):
+    if os_name == OS_WIN:
+        os.system(CMD_CLEAN_WIN)
+    elif os_name == OS_UNIX:
+        os.system(CMD_CLEAN_UNIX)
 
+
+# Main Function
+if __name__ == "__main__":
+    while True:
+        clean_screen(os.name)
+        print("MAIN FUNCTION")
+        print("  1.Demostrate Data Manipulation")
+
+        var_opt = input(
+            "\nPlease input the number of function you want to run:")
+
+        try:
+            var_opt = int(var_opt)
+            break
+        except ValueError:
+            input("Invalid input. Please enter a valid integer.")
+
+    if var_opt == 1:
+        dataManipulation()
