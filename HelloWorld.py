@@ -2,17 +2,16 @@ import os
 
 """
 This is my first Python code
-In this code, I will try to use Python to manipulate vary data type.
-Reference: (1) https://www.youtube.com/watch?v=wqRlKVRUV_k&list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk
-           (2) f-string https://peps.python.org/pep-0498/
+In this code, I will try to use Python to manipulate vary data type and handle the code.
 """
+
 OS_WIN = "nt"
 OS_UNIX = "posix"
 CMD_CLEAN_WIN = "cls"
 CMD_CLEAN_UNIX = "clear"
 
 
-def dataManipulation():
+def data_manipulation():
     print(f"\tData Manipulation Start...")  # \t will leave 8 spaces
     exec_lab1()
     exec_lab2()
@@ -165,6 +164,50 @@ def exec_lab1():
     print(f"\t when program runs, you won't see anything from standard output since we didn't print it.")
     print(f"\tLab 1: put the value in your code directly...DONE!\n")
 
+#
+
+
+def loop_handling():
+    var_counter = 0
+    print(f"\tLoop Handling Start...")
+    print(
+        f"\t case1: you can give a list as an interator in Python, it will get each of elements one by one. e.g., for x in [4,1,2]")
+    # It's different from Java code since Java code only can assign an iterator which is an integer type.
+    for var_element in [4, 1, 2]:  # you can assign any type in List.
+        print(f"\t  loop:{var_counter}, element={var_element}")
+        var_counter += 1
+
+    var_counter = 0
+    print(f"\t case2: you can give a string as an interator in Python, it will get every character one by one. e.g., for c in \"Hello\"")
+    for var_element in "Hello":
+        print(f"\t  loop:{var_counter}, element={var_element}")
+        var_counter += 1
+
+    var_counter = 0
+    print(f"\t case3: you also can use keyword: range to represent consecutive numbers. e.g., giving the rang(3), the result will be:")
+    for var_element in range(3):
+        print(f"\t  loop:{var_counter}, element={var_element}")
+        var_counter += 1
+
+    var_counter = 0
+    print(f"\t case4: slicing also can be used with range, here is an example: rang(3,6), the result will be:")
+    for var_element in range(3, 6):
+        print(f"\t  loop:{var_counter}, element={var_element}")
+        var_counter += 1
+
+    # Imagine that the condition checking in the looping always exists. Thus you also can put the keyword: else with loop handling for particular work when it is going to the end.
+    # Python also supports 'break' / 'continue' in the loop, but they are the same with other languages, so I won't put demo in here.
+    var_counter = 0
+    var_sum = 0
+    print(f"\t case5:  print the sum from adding 1 to 10 by using 'else' to handle the loop.")
+    for var_element in range(1, 11):
+        var_sum += var_element
+        var_counter += 1
+    else:  # be aware if you use break in the loop, the else block won't be executed either.
+        print(
+            f"\t  we only print the result when loop end:{var_counter}, var_sum={var_sum}")
+    print(f"\tLoop Handling Start...End!")
+
 
 # determine and execute from main function
 # be aware the function must to be declare before using
@@ -180,7 +223,8 @@ if __name__ == "__main__":
     while True:
         clean_screen(os.name)
         print("MAIN FUNCTION")
-        print("  1.Demostrate Data Manipulation")
+        print("  1.Demostrate how to manipulate data in Python.")
+        print("  2.Demostrate how to handle loop in Python.")
 
         var_opt = input(
             "\nPlease input the number of function you want to run:")
@@ -192,4 +236,6 @@ if __name__ == "__main__":
             input("Invalid input. Please enter a valid integer.")
 
     if var_opt == 1:
-        dataManipulation()
+        data_manipulation()
+    if var_opt == 2:
+        loop_handling()
