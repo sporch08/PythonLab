@@ -164,8 +164,6 @@ def exec_lab1():
     print(f"\t when program runs, you won't see anything from standard output since we didn't print it.")
     print(f"\tLab 1: put the value in your code directly...DONE!\n")
 
-#
-
 
 def loop_handling():
     var_counter = 0
@@ -209,8 +207,90 @@ def loop_handling():
     print(f"\tLoop Handling Start...End!")
 
 
-# determine and execute from main function
-# be aware the function must to be declare before using
+def func_with_default_value(arg1="Hello Word"):
+    # We specify a particular default value for argument, if program calls the method without giving argument, it will print: "Hello Word"
+    print(f"\t the argument method received is: \"{arg1}\"")
+
+
+def func_with_multi_args(arg1=9, arg2=3):
+    # In this function, you can see the order of argument can be changed from requester.
+    # The Python will set default value to argument if you didn't pass all arguments when calling.
+    print(f"\t the arg1={arg1}, arg2={arg2}, arg1/arg2={arg1/arg2}")
+
+
+def func_with_packed_args(*args):
+    # In Python, placing an asterisk (*) in front of an argument in a function definition has a specific meaning.
+    # It is used to indicate that the argument should accept a variable number of positional arguments, often referred to as "packing" or "unpacking" arguments.
+    # When you use an asterisk before a parameter name in a function definition, it allows the function to accept any number of positional arguments, which are then packed into a tuple.
+    val_sum = 0
+    print(
+        f"\t in the function, it receives {len(args)} of the elements:{*args,}. ")
+    # print(
+    #    f"\t in the function, it receives the elements: {', '.join(str(arg) for arg in args)}")
+    for element in args:
+        try:
+            val_sum = val_sum + int(element)
+        except Exception:
+            print(f"\t  element: '{element}' is invalid number, bypass.")
+    print(f"\t the sum of this calling is: {val_sum}")
+
+
+def func_with_unpacked_args(a, b, c):
+    # Here is the usage of unpacking. I personally think it's not common and resilient since the length of arguments is fixed.
+    # Compare with function: func_with_packed_args, you will see the rigidity.
+    val_sum = 0
+    print(
+        f"\t in the function, it receives {a}, {b}, {c} three arguments.")
+    if isinstance(a, int):
+        val_sum += a
+    else:
+        print(f"\t  element: '{a}' is invalid number, bypass.")
+    if isinstance(b, int):
+        val_sum += b
+    else:
+        print(f"\t  element: '{b}' is invalid number, bypass.")
+    if isinstance(c, int):
+        val_sum += c
+    else:
+        print(f"\t  element: '{c}' is invalid number, bypass.")
+    print(f"\t the sum of this calling is: {val_sum}")
+
+
+def function_handling():
+    print(f"\tFunction Handling Start...")
+    func_with_default_value()
+    func_with_default_value("Happy Python Programmer")
+    print(f"\tcalling the function without specifying the arguments. default value arg1=9, arg2=3")
+    func_with_multi_args()
+    print(f"\tcalling the function by specifying the arguments.")
+    func_with_multi_args(4, 2)
+
+    # the order of argument can be changed by calling with specified argument name.
+    print(f"\tcalling the function by specifying the arguments and the name of the arguments.")
+    func_with_multi_args(arg2=4, arg1=2)
+    print(f"\tcalling the function by specifying the partial arguments.")
+    func_with_multi_args(arg2=4)
+
+    # be aware you have to assign multiple arguments instead of assigning a List or Tuple since the function will package all arguments as Tuple.
+    print(f"\tdemostrate the concept of packing arguments by using asterisk* in function arguments.")
+    func_with_packed_args(1, 3, 5, "test", 7, 9, "a")
+
+    var_tuple = [1, "a", 3]
+    var_len_z = len(var_tuple)
+    print(f"\t here we have a Tuple:{*var_tuple,}, length={var_len_z}")
+    func_with_unpacked_args(*var_tuple)
+
+    print(f"\tdemostrate the concept of unpacking arguments by using fixed arguments in function.")
+    var_tuple = [1, 2, 3, 4]
+    try:
+        func_with_unpacked_args(*var_tuple)
+    except TypeError as tpe:
+        print(
+            f"\t if you give much or less arguments, it throws exception. {{error message: {tpe}}}")
+    print(f"\tFunction Handling Start...End!")
+
+
+# determine the OS and execute the command of screen cleaning respectively.
 def clean_screen(os_name):
     if os_name == OS_WIN:
         os.system(CMD_CLEAN_WIN)
@@ -220,14 +300,18 @@ def clean_screen(os_name):
 
 # Main Function
 if __name__ == "__main__":
+    # determine and execute from main function
+    # be aware the function must to be declare before using
     while True:
         clean_screen(os.name)
         print("MAIN FUNCTION")
         print("  1.Demostrate how to manipulate data in Python.")
         print("  2.Demostrate how to handle loop in Python.")
+        print("  3.Demostrate how to use function resilient.")
 
+        # ask user input from keyboard.
         var_opt = input(
-            "\nPlease input the number of function you want to run:")
+            "\nPlease input the number of function you want to run: ")
 
         try:
             var_opt = int(var_opt)
@@ -239,3 +323,5 @@ if __name__ == "__main__":
         data_manipulation()
     if var_opt == 2:
         loop_handling()
+    if var_opt == 3:
+        function_handling()
