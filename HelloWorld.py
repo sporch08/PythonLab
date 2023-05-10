@@ -1,4 +1,4 @@
-import os
+import mypackage
 
 """
 This is my first Python code
@@ -290,20 +290,12 @@ def function_handling():
     print(f"\tFunction Handling Start...End!")
 
 
-# determine the OS and execute the command of screen cleaning respectively.
-def clean_screen(os_name):
-    if os_name == OS_WIN:
-        os.system(CMD_CLEAN_WIN)
-    elif os_name == OS_UNIX:
-        os.system(CMD_CLEAN_UNIX)
-
-
 # Main Function
 if __name__ == "__main__":
     # determine and execute from main function
     # be aware the function must to be declare before using
     while True:
-        clean_screen(os.name)
+        mypackage.common.clean_screen()
         print("MAIN FUNCTION")
         print("  1.Demostrate how to manipulate data in Python.")
         print("  2.Demostrate how to handle loop in Python.")
