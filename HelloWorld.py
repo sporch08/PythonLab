@@ -1,4 +1,5 @@
 import mypackage
+import random
 
 """
 This is my first Python code
@@ -21,19 +22,6 @@ def data_manipulation():
 
 
 def exec_lab4():
-    '''
-    Here is the note I copied from ChatGPT, the difference between List & Tuple and the considerations. 
-    In Python, both lists and tuples are used to store a collection of items. However, there are some key differences between the two:
-      1. Mutability: Lists are mutable, which means that you can add, remove, or change items in a list. Tuples, on the other hand, are immutable, which means that you cannot change the items once they are created.
-      2. Syntax: Lists are defined using square brackets [], while tuples are defined using parentheses ().
-      3. Use cases: Lists are generally used for collections of related items that need to be changed or manipulated, while tuples are typically used for collections of related items that will not be changed.
-    Here are some situations where you might choose to use a tuple instead of a list:
-      1. When you want to ensure that the data in your collection cannot be modified accidentally.
-      2. When you want to create a collection that can be used as a key in a dictionary (because dictionaries require immutable keys).
-      3. When you want to return multiple values from a function in a way that can't be easily modified outside of the function.
-      4. When you want to optimize memory usage and performance, since tuples are smaller and faster than lists.
-    Overall, the choice between using a list or a tuple will depend on your specific use case and the requirements of your program.    
-    '''
     print(f"\tLab 4: data structure manipulation...")
     print(f"\t in this demo, the program will illustrate how to use List & Tuple.")
     var_list = [12, 60, 15, 70, 90]
@@ -66,16 +54,6 @@ def exec_lab4():
         var_tuple[0] = 99
     except TypeError as e:
         print(f"\t oops! you got an error:{e}")
-
-    '''
-    # Set, Dictionary
-    # The dictionary in Python is similar with the properties in Java. However, there are some differences between them:
-        (1) Data types: In Java, Properties can only store String key-value pairs, whereas in Python, dictionaries can store key-value pairs of any data type.
-        (2) Serialization: Properties in Java can be easily serialized to a file or stream, whereas Python dictionaries do not have built-in serialization capabilities. However, Python provides a module called pickle that can be used to serialize Python objects including dictionaries.
-        (3) Syntax: The syntax for accessing elements in a dictionary in Python is simpler and more concise than accessing properties in Java. In Python, you can access a value from a dictionary by using the key in square brackets: my_dict['key']. In Java, you need to use the getProperty() method to access a value from a Properties object: myProperties.getProperty("key").
-        (4) Ordering: Properties in Java are ordered, whereas dictionaries in Python are unordered. However, starting from Python 3.7, dictionaries are guaranteed to maintain insertion order.
-        (5) Default values: In Java, Properties provide a way to specify default values for missing keys by setting the default property. In Python, you can use the get() method to specify a default value for missing keys.    
-    '''
 
     var_set1 = {1, 2, 3, 4}
     var_set2 = {3, 4, 5, 6}
@@ -290,6 +268,60 @@ def function_handling():
     print(f"\tFunction Handling Start...End!")
 
 
+def file_accessing():
+    print(f"\tFile Accessing...Start")
+    print(f"\tFile Accessing...End!")
+
+
+def demo_random_and_statistics():
+    print(f"\tRandom&Statistics...Start")
+    func_random_choice()
+    print(
+        f"\t try to use funcion:random.sample([1, 5, 6, 10, 20], 3) five times, let's see what will be happen! ")
+    for x in range(5):
+        var_result = random.sample([1, 5, 6, 10, 20], 3)
+        print(f"\t  round:{x+1}, the result is: {var_result}")
+
+    var_result = [1, 5, 8, 20]
+    random.shuffle(var_result)
+    print(
+        f"\t try to use funcion:random.shuffle([1, 5, 8, 20]), the result is: {var_result}")
+
+    print(f"\t try to use function: random.random() to get the random number between 0.0 ~ 1.0.")
+    for x in range(5):
+        data = random.random()  # the data type of return value is float.
+        print(f"\t  round: {x+1}, result is: {data}")
+
+    print(f"\t try to use function: random.uniform(1.0, 10.0) to get the random number between 1.0 ~ 10.0.")
+    for x in range(5):
+        # the data type of return value is float.
+        data = random.uniform(1.0, 10.0)
+        print(f"\t  round: {x+1}, result is: {data}")
+
+    print(f"\t try to use function: random.normalvariate(100, 10) to get the random number which follows standard deviation between 90 ~ 110.")
+    for x in range(5):
+        # it doesn't mean the number you get from random.normalvariate(100,10) will between 90 ~ 110 exactly, sometimes the return value will out of sigma.
+        data = random.normalvariate(100, 10)
+        print(f"\t  round: {x+1}, result is: {data}")
+
+    print(f"\tRandom&Statistics...End!")
+
+
+def func_random_choice():
+    var_counter = 0
+    for var_counter in range(5):
+        var_result = random.choice([1, 5, 6, 10, 20])
+
+        if (var_counter > 0):
+            var_result_str = var_result_str + ", " + str(var_result)
+        else:
+            var_result_str = str(var_result)
+        var_counter += 1
+
+    print(
+        f"\t try to use funcion:random.choice([1,5,6,10,20] five times, and the result is: {{{var_result_str}}}")
+
+
 # Main Function
 if __name__ == "__main__":
     # determine and execute from main function
@@ -297,23 +329,37 @@ if __name__ == "__main__":
     while True:
         mypackage.common.clean_screen()
         print("MAIN FUNCTION")
-        print("  1.Demostrate how to manipulate data in Python.")
-        print("  2.Demostrate how to handle loop in Python.")
-        print("  3.Demostrate how to use function resilient.")
+        print("  [1]. Demostrate how to manipulate data in Python.")
+        print("  [2]. Demostrate how to handle loop in Python.")
+        print("  [3]. Demostrate how to use function resilient.")
+        print("  [4]. Demostrate how to access data from file.")
+        print("  [5]. Demostrate random and statistics module.")
+        print("  [X]. Exit")
 
         # ask user input from keyboard.
         var_opt = input(
             "\nPlease input the number of function you want to run: ")
 
+        if var_opt.upper() == "X":
+            print("\nSee You!\n")
+            break
+
         try:
             var_opt = int(var_opt)
-            break
         except ValueError:
             input("Invalid input. Please enter a valid integer.")
 
-    if var_opt == 1:
-        data_manipulation()
-    if var_opt == 2:
-        loop_handling()
-    if var_opt == 3:
-        function_handling()
+        try:
+            if var_opt == 1:
+                data_manipulation()
+            if var_opt == 2:
+                loop_handling()
+            if var_opt == 3:
+                function_handling()
+            if var_opt == 4:
+                file_accessing()
+            if var_opt == 5:
+                demo_random_and_statistics()
+            var_opt = input("\nPress any key to go back to main function...")
+        except Exception as e:
+            print(f"\tOops! We got errors! {{error message: {e}}}")
