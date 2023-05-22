@@ -1,15 +1,12 @@
 import mypackage
 import random
+import json
+import os
 
 """
 This is my first Python code
 In this code, I will try to use Python to manipulate vary data type and handle the code.
 """
-
-OS_WIN = "nt"
-OS_UNIX = "posix"
-CMD_CLEAN_WIN = "cls"
-CMD_CLEAN_UNIX = "clear"
 
 
 def data_manipulation():
@@ -268,14 +265,80 @@ def function_handling():
     print(f"\tFunction Handling Start...End!")
 
 
-def file_accessing():
+def demo_file_accessing():
     print(f"\tFile Accessing...Start")
+    do_file_access_case1()
+    do_file_access_case2()
+    do_file_access_case3()
+    do_file_access_case4()
+    do_file_access_case5()
+    print(f"\t in addition, Python also provides method: configparser.ConfigParser() to get the corresponding value from ini file. Please check from internet.")
     print(f"\tFile Accessing...End!")
+
+
+def do_file_access_case5():
+    from datetime import datetime
+    input("\t case 5, now try to modify the content we created before, you can check the file first, then press any key...")
+    with open("test.json", "r+") as file:
+        data = json.load(file)
+        data["modified_date"] = datetime.fromtimestamp(
+            os.path.getmtime(os.path.basename(__file__))).strftime("%Y-%m-%d %H:%M:%S")
+        data["file_size_byte"] = os.path.getsize(
+            os.path.basename(__file__))
+        # Move the file pointer to the beginning of the file
+        file.seek(0)
+
+        json.dump(data, file, indent=4)
+
+        # Truncate any remaining content
+        file.truncate()
+    print(f"\t case 5, now try to modify the content we created before...Done!")
+
+
+def do_file_access_case4():
+    print(f"\t case 4, now try to access file as JSON format.")
+    data = {"file_name": "", "modified_date": "", "file_size_byte": 0}
+    try:
+        with open("test.json", mode="w", encoding="utf-8") as file:
+            data["file_name"] = os.path.basename(__file__)
+            json.dump(data, file, indent=4)
+    except Exception as e:
+        # raise in here represents throw exception to outer function handle.
+        raise
+    print(f"\t case 4, now try to access file as JSON format...Done! You can check it from file.")
+
+
+def do_file_access_case3():
+    print(f"\t case 3, in particular cases, you may need to read the file line by line, that's say we put 3 numbers: 8, 6, 3 in each line of file: 'readline.txt' and want to get the sum.")
+    sum, counter = 0, 0
+    with open("readline.txt", mode="w", encoding="utf-8") as file:
+        file.write("8\n6\n3")
+    with open("readline.txt", mode="r", encoding="utf-8") as file:
+        for line in file:
+            sum = sum+int(line)
+            counter = counter+1
+    print(f"\t case 3, after read file {counter} lines, the sum is: {sum}")
+
+
+def do_file_access_case2():
+    print(f"\t case 2, now we try to read content from file we created before, and print the content...")
+    with open("test.txt", mode="r", encoding="utf-8") as file:
+        print(
+            f"\t case 2, now we try to read content from file we created before, and print the content...Done! the content is: '{file.read()}'")
+
+
+def do_file_access_case1():
+    print(f"\t case 1, try to create a file named:'test.txt', and write a line:'hello world!'...")
+    # For the detailed information about OpenTextMode, please check README.md
+    # Recommend specify encodeing="utf-8" as default to avoid encoding issue occurs.
+    with open("test.txt", mode="w", encoding="utf-8") as file:
+        file.write("hello world!")
+    print(f"\t case 1, try to create a file named:'test.txt', and write a line:'hello world!'...Done!")
 
 
 def demo_random_and_statistics():
     print(f"\tRandom&Statistics...Start")
-    func_random_choice()
+    do_random_choice()
     print(
         f"\t try to use funcion:random.sample([1, 5, 6, 10, 20], 3) five times, let's see what will be happen! ")
     for x in range(5):
@@ -307,7 +370,7 @@ def demo_random_and_statistics():
     print(f"\tRandom&Statistics...End!")
 
 
-def func_random_choice():
+def do_random_choice():
     var_counter = 0
     for var_counter in range(5):
         var_result = random.choice([1, 5, 6, 10, 20])
@@ -357,9 +420,10 @@ if __name__ == "__main__":
             if var_opt == 3:
                 function_handling()
             if var_opt == 4:
-                file_accessing()
+                demo_file_accessing()
             if var_opt == 5:
                 demo_random_and_statistics()
             var_opt = input("\nPress any key to go back to main function...")
         except Exception as e:
             print(f"\tOops! We got errors! {{error message: {e}}}")
+            var_opt = input("\nPress any key to go back to main function...")

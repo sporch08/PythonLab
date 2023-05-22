@@ -1,3 +1,4 @@
+import os
 OS_WIN = "nt"
 OS_UNIX = "posix"
 CMD_CLEAN_WIN = "cls"
