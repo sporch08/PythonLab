@@ -3,9 +3,9 @@
 
 # Introduction
 - [HelloWorld.py: The practice as a beginner.](https://github.com/sporch08/PythonLab/blob/main/HelloWorld.py)
-- [OpenDataHandsOn.py: The practice of accessing TW open data platform (Coming Soon)](https://github.com/sporch08/PythonLab/)
+- [OpenDataHandsOn.py: The practice of accessing TW open data platform](https://github.com/sporch08/PythonLab/blob/main/OpenDataHandsOn.py)
 
-# Notes
+# Notes for HelloWorld.py
 ## About Data Type
 ### The difference between List & Tuple (from ChatGPT)
 - In Python, both lists and tuples are used to store a collection of items. However, there are some key differences between the two:
@@ -39,6 +39,13 @@
 - Most of the time, the result will be "No differences found between the distributions," indicating that the distributions are similar. However, there is still a small possibility that the result will be "Differences exist between the distributions." This occurs due to the internal algorithms used by the functions, which may produce subtle variations in the distribution, even when given the same conditions.
 - It's important to note that these differences, if they occur, are typically very subtle and may not have practical significance for most use cases. The functions random.random() and random.uniform(0.0, 1.0) are both designed to provide a uniform distribution within the range (0, 1), and in most cases, they behave similarly.
 
+# Notes for OpenDataHandsOn.py
+## The instructions of accessing EPA API
+- [EPA API Documentation](https://data.epa.gov.tw/paradigm)
+## Troubleshooting on sort a list by multiple keys (accending then descending) 
+ - [Basic Introduction](https://officeguide.cc/python-sort-sorted-tutorial-examples/)
+ - [From Stakeoverflow](https://stackoverflow.com/questions/51252687/set-ascending-descending-for-each-column-when-sorting-by-multiple-columns)
+
 
 ## Miscellaneous
 ### A proper comment style of Python code
@@ -50,4 +57,8 @@
 1. [Main Material: cwpeng-course on Youtube](https://www.youtube.com/watch?v=wqRlKVRUV_k&list=PL-g0fdC5RMboYEyt6QS2iLb_1m7QcgfHk)
 2. [How to Write Beautiful Python Code With PEP 8](https://realpython.com/python-pep8/)
 3. [Format String-PEP 498 – Literal String Interpolation](https://peps.python.org/pep-0498/)
+   - [related with input/output](https://docs.python.org/3/tutorial/inputoutput.html)
 4. [Comparson of File Open Mode](https://ghost831105.medium.com/python%E5%AD%B8%E7%BF%92%E6%97%A5%E8%AA%8C-%E6%AA%94%E6%A1%88%E8%AE%80%E5%8F%96-%E5%AF%AB%E5%85%A5-%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BC%83-r-a-w-caac9e1aef72)
+5. [Taiwan goverment open data portal](https://data.gov.tw/)
+    - [API instructions](https://drive.google.com/file/d/13kPG4SJ_4IQI2mVBK_-i422U41BUb-d5/view)
+
